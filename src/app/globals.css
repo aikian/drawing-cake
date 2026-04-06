@@ -1,27 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #FDFAF6;
+  --foreground: #2C2417;
+  --cream: #F5EDD8;
+  --cream-light: #FBF7EF;
+  --beige: #E8D9C0;
+  --beige-dark: #C9B99A;
+  --brown: #8B6F47;
+  --brown-light: #A88B63;
+  --brown-dark: #5C4A30;
+  --pink: #F2C4BE;
+  --pink-light: #FAE8E5;
+  --border: #E0D0B8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--beige-dark);
+  border-radius: 3px;
+}
+
+/* 공통 컴포넌트 */
+@layer components {
+  .btn-primary {
+    @apply bg-[#8B6F47] text-white px-6 py-3 rounded-full font-medium
+           hover:bg-[#5C4A30] transition-all duration-200 active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-secondary {
+    @apply bg-[#F5EDD8] text-[#5C4A30] px-6 py-3 rounded-full font-medium
+           border border-[#E0D0B8] hover:bg-[#E8D9C0] transition-all duration-200
+           active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .btn-outline {
+    @apply border border-[#8B6F47] text-[#8B6F47] px-6 py-3 rounded-full font-medium
+           hover:bg-[#F5EDD8] transition-all duration-200 active:scale-95
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .card {
+    @apply bg-white rounded-2xl border border-[#E0D0B8] shadow-sm;
+  }
+  .input {
+    @apply w-full px-4 py-3 rounded-xl border border-[#E0D0B8] bg-white
+           focus:outline-none focus:ring-2 focus:ring-[#C9B99A] focus:border-[#C9B99A]
+           placeholder:text-[#C9B99A] text-[#2C2417] transition-all;
+  }
+  .tab-active {
+    @apply bg-[#8B6F47] text-white;
+  }
+  .tab-inactive {
+    @apply text-[#8B6F47] hover:bg-[#F5EDD8];
   }
 }
